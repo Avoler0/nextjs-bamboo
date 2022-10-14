@@ -2,11 +2,11 @@ import Link from "next/link"
 import styled from "styled-components"
 
 export default function NavBar(){
-  const navItems = ["게시글","작성하기","문의하기"]
+  const navItems = ["게시글","작성하기","어드민"]
   const navLink:any = {
     게시글: "board",
     작성하기: "write",
-    문의하기: "ticket"
+    어드민: "admin"
   }
   return(
     <Nav>

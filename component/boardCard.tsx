@@ -1,19 +1,35 @@
 import styled from "styled-components"
 import Image from 'next/image'
 import People from "../image/icons/people.png"
-export default function BoardCard(){
+
+interface board {
+  id:number,
+  content:string
+}
+interface props {
+  board:board
+}
+
+export default function BoardCard({board}:props){
+  console.log("카드 게시글",board);
+  
   return (
     <Card>
-      <Info>
-        <Profile>
-          <ImageDiv>
-            <Image src={People}/>
-          </ImageDiv>
-          <span>익명</span>
-        </Profile>
-      </Info>
       <Content>
-        <Text>안녕하세요</Text>
+        <Info>
+          <Profile>
+            <ImageDiv>
+              <Image src={People}/>
+            </ImageDiv>
+            <span>익명</span>
+          </Profile>
+          <div>
+            시간
+          </div>
+        </Info>
+        <WriteArea>
+          <Text dangerouslySetInnerHTML={{__html:board.content}} />
+        </WriteArea>
       </Content>
     </Card>
   )
@@ -21,16 +37,22 @@ export default function BoardCard(){
 
 const Card = styled.article`
   width: 80%;
-  margin: 0 auto;
-  height: 180px;
+  margin: 0 auto 3rem auto;
+  height: 220px;
   border: 0.15rem solid #cccccc;
   border-radius: 10px;
+  overflow: hidden;
 `;
-
+const Content = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+`;
 const Info = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 30%;
   padding: 0.9rem;
   border-bottom: 1px solid #cccccc;
 `;
@@ -50,9 +72,12 @@ const ImageDiv = styled.div`
   border-radius: 1.5rem;
   background-color: #cccccc;
 `;
-const Content = styled.div`
-  padding: 1rem;
+const WriteArea = styled.div`
+  height: 100%;
+  margin: 1rem;
+  overflow: hidden;
 `;
 const Text = styled.div`
-
+  height: 90%;
+  overflow: hidden;
 `;

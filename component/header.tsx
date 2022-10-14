@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components'
 
 export default function Header(){
@@ -6,14 +7,16 @@ export default function Header(){
       <Content>
         <Logo>
           <span>
-            대나무숲
+            <Link href="/">
+              대나무숲
+            </Link>
           </span>
         </Logo>
-        <Account>
+        {/* <Account>
           <span>
             볼러<span style={{color:"black"}}>님</span>
           </span>
-        </Account>
+        </Account> */}
       </Content>
     </HeaderJSX>
   )
