@@ -6,6 +6,7 @@ import { AxiosApi } from "../lib/axiosInstance";
 interface board {
   id:number,
   content:string
+  date:Date
 }
 
 export default function Board(){

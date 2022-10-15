@@ -6,10 +6,13 @@ import { AxiosApi } from "../lib/axiosInstance";
 export default function Write(){
   const router = useRouter();
   const textRef = useRef<HTMLTextAreaElement | null>(null);
+  
+  
  // 글자수 제한 넣기
   function onSubmit(event:any){
+    const date = new Date()
     const str = textRef.current?.value.replace(/(\n|\r\n)/g,'<br/>')
-    AxiosApi.post("/api/board",{content:str})
+    AxiosApi.post("/api/board",{content:str , date:date})
     .then((res)=>{
       router.push("/")
     })
@@ -18,7 +21,6 @@ export default function Write(){
     })
     event.preventDefault();
   }
-
   return (
     <Container>
       <Content>
@@ -31,7 +33,7 @@ export default function Write(){
           </form>
         </Option>
         <Card>
-          <TextArea ref={textRef} />
+          <TextArea ref={textRef} maxLength={200}/>
         </Card>
       </Content>
     </Container>

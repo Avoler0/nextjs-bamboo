@@ -1,10 +1,12 @@
 import styled from "styled-components"
 import Image from 'next/image'
 import People from "../image/icons/people.png"
+import {daysCreateArray} from "../lib/daysHandler"
 
 interface board {
   id:number,
   content:string
+  date:any
 }
 interface props {
   board:board
@@ -12,6 +14,8 @@ interface props {
 
 export default function BoardCard({board}:props){
   console.log("카드 게시글",board);
+  const newDate = daysCreateArray(new Date(board.date));
+  console.log(newDate);
   
   return (
     <Card>
